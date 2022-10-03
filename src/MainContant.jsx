@@ -28,11 +28,12 @@ export default function MainContant() {
   }
 
   function UndoRemove(id){
+    console.log("UndoRemove function is running ....", id);
     const temp = [...mainTodo];
     temp.push(doneList[id]);
     setMainTodo(temp);
     const temp2 = [...doneList];
-    temp2.splice(id , 1) ;
+    temp2.pop(id) ;
     setDoneList(temp2);
   }
 
@@ -50,7 +51,7 @@ export default function MainContant() {
 
         {mainTodo.length > 0 ? (
           mainTodo.map((item, index) => {
-            return <ListItem item={item} index={index} Remove={Remove} />;
+            return <ListItem key={index} item={item} index={index} Remove={Remove} />;
           })
         ) : (
           <NothingTodo />
@@ -66,7 +67,7 @@ export default function MainContant() {
 
         {doneList.length > 0 ? (
           doneList.map(function (item, index) {
-            return <DoneList item={item} index={index} UndoRemove={UndoRemove}/>;
+            return <DoneList key={index} item={item} index={index} UndoRemove={UndoRemove}/>;
           })
         ) : (
           <NothingTodo />
