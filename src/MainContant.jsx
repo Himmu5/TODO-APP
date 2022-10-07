@@ -33,7 +33,7 @@ export default function MainContant() {
     temp.push(doneList[id]);
     setMainTodo(temp);
     const temp2 = [...doneList];
-    temp2.pop(id) ;
+    temp2.splice(id,1) ;
     setDoneList(temp2);
   }
 
